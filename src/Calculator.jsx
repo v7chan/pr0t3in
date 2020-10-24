@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import List from '@material-ui/core/List';
@@ -10,10 +9,9 @@ import Divider from '@material-ui/core/Divider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import Widget from './Widget.jsx'
+import GramInput from './GramInput.jsx'
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -80,39 +78,22 @@ const Calculator = () => {
           <ListItem>
             <ListItemText primary={`Ground beef (${Protein[GROUND_BEEF].toFixed(2)}g)`} />
             <ListItemSecondaryAction>
-              <OutlinedInput
-                className={input}
-                margin="dense"
-                value={sources[GROUND_BEEF]}
-                onChange={(event) => setTotal(event.target.value)}
-                endAdornment={<InputAdornment position="end">g</InputAdornment>}
-                labelWidth={0}
-              />
+              <GramInput value={sources[GROUND_BEEF]} />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem>
             <ListItemText primary={`Chicken breast (${Protein[CHICKEN_BREAST].toFixed(2)}g)`} />
             <ListItemSecondaryAction>
-              <OutlinedInput
-                className={input}
-                margin="dense"
-                value={sources[CHICKEN_BREAST]}
-                onChange={(event) => setTotal(event.target.value)}
-                endAdornment={<InputAdornment position="end">g</InputAdornment>}
-                labelWidth={0}
-              />
+              <GramInput value={sources[CHICKEN_BREAST]} />
             </ListItemSecondaryAction>
           </ListItem>
         </List>
         <AppBar position="fixed" color="primary" className={appBar}>
           <Toolbar>
-            <OutlinedInput
-              className={clsx(input, totalInput)}
-              margin="dense"
+            <GramInput
+              className={totalInput}
               value={total}
               onChange={(event) => setTotal(event.target.value)}
-              endAdornment={<InputAdornment position="end">g</InputAdornment>}
-              labelWidth={0}
             />
           </Toolbar>
         </AppBar>
