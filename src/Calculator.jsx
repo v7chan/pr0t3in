@@ -10,23 +10,19 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Widget from './Widget.jsx'
+import QuantityWidget from './QuantityWidget.jsx'
 import GramInput from './GramInput.jsx'
 
 const useStyles = makeStyles((theme) => ({
   title: {
     margin: `${theme.spacing(2)}px 0`
   },
+  totalInput: {
+    margin: '0 auto'
+  },
   appBar: {
     top: 'auto',
     bottom: 0
-  },
-  input: {
-    background: 'white',
-    width: 75
-  },
-  totalInput: {
-    margin: '0 auto'
   },
   divider: {
     margin: `${theme.spacing(1)}px 0`
@@ -44,7 +40,8 @@ const Protein = {
 }
 
 const Calculator = () => {
-  const { wrapper, title, appBar, input, totalInput, divider, widgetContainer } = useStyles()
+  const { title, appBar, totalInput, divider } = useStyles()
+
   const [total, setTotal] = useState(45)
   const [sources, setSources] = useState({
     [CHICKEN_SAUSAGE]: 0,
@@ -66,12 +63,12 @@ const Calculator = () => {
     <>
       <CssBaseline />
       <Container maxWidth="sm">
-        <Typography variant="h5" align="center" className={title}>pr0t3in</Typography>
+        <Typography variant="h5" align="center" className={title}>prot31n</Typography>
         <List>
           <ListItem>
             <ListItemText primary={`Chicken sausages (${Protein[CHICKEN_SAUSAGE]}g)`} />
             <ListItemSecondaryAction>
-              <Widget value={sources[CHICKEN_SAUSAGE]} onChange={changeChickenSausages} />
+              <QuantityWidget value={sources[CHICKEN_SAUSAGE]} onChange={changeChickenSausages} />
             </ListItemSecondaryAction>
           </ListItem>
           <Divider className={divider} />

@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   inputContainer: {
     background: 'white',
-    width: 75
+    width: 100
   },
   input: {
     '&::-webkit-outer-spin-button': {

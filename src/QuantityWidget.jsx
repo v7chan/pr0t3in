@@ -2,30 +2,38 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import RemoveCircleOutlineOutlinedIcon from '@material-ui/icons/RemoveCircleOutlineOutlined';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   widgetContainer: {
     height: 40,
-    width: 75
+    width: 100
+  },
+  button: {
+    minWidth: 0,
+    padding: `${theme.spacing(1)}px`
   }
-})
+}))
 
-const Widget = ({ value, onChange }) => {
-  const { widgetContainer } = useStyles()
+const QuantityWidget = ({ value, onChange }) => {
+  const { widgetContainer, button } = useStyles()
 
   return (
     <Grid container justify="space-between" alignItems="center" className={widgetContainer}>
       <Grid item>
-        <IconButton
-          size="small"
+        <Button
           color="secondary"
+          variant="outlined"
+          disableElevation
+          className={button}
           onClick={() => onChange(value - 1)}
+          disabled={value < 1}
         >
-          <RemoveCircleOutlineOutlinedIcon fontSize="inherit" />
-        </IconButton>
+          <RemoveIcon fontSize="inherit" />
+        </Button>
       </Grid>
       <Grid item>
         <Typography display="inline" variant="subtitle1">
@@ -33,16 +41,18 @@ const Widget = ({ value, onChange }) => {
         </Typography>
       </Grid>
       <Grid item>
-        <IconButton
-          size="small"
+        <Button
           color="primary"
+          variant="outlined"
+          disableElevation
+          className={button}
           onClick={() => onChange(value + 1)}
         >
-          <AddCircleOutlineOutlinedIcon fontSize="inherit" />
-        </IconButton>
+          <AddIcon fontSize="inherit" />
+        </Button>
       </Grid>
     </Grid>
   )
 }
 
-export default Widget
+export default QuantityWidget

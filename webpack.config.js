@@ -22,7 +22,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: false,
-      title: 'pr0t3in',
+      title: 'prot31n',
       template: 'src/index.html'
     })
   ]
